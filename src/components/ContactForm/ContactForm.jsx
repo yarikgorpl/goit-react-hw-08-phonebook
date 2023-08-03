@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { FcAddDatabase } from 'react-icons/fc';
 import css from 'components/ContactForm/ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
+    number: '',
   });
 
   const handleInputChange = event => {
@@ -22,7 +22,7 @@ const ContactForm = () => {
   const reset = () => {
     setFormData({
       name: '',
-      phone: '',
+      number: '',
     });
   };
 
@@ -33,7 +33,7 @@ const ContactForm = () => {
     const form = event.target;
 
     const nameValue = form.elements.name.value;
-    const phoneValue = form.elements.phone.value;
+    const numberValue = form.elements.number.value;
     const existingContact = contacts.find(
       existingContact =>
         existingContact.name.toLowerCase() === nameValue.toLowerCase()
@@ -42,7 +42,7 @@ const ContactForm = () => {
     if (existingContact) {
       alert(`${nameValue} is already in contacts`);
     } else {
-      dispatch(addContact({ name: nameValue, phone: phoneValue }));
+      dispatch(addContact({ name: nameValue, number: numberValue }));
       reset();
     }
   };
@@ -69,13 +69,13 @@ const ContactForm = () => {
         />
       </label>
       <label className={css.label}>
-        Phone
+        Number
         <input
           className={css.input}
           type="tel"
-          name="phone"
-          value={formData.phone}
-          placeholder="Enter contact phone"
+          name="number"
+          value={formData.number}
+          placeholder="Enter contact number"
           onChange={handleInputChange}
           pattern="^[0-9]+$"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

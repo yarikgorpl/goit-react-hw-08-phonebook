@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { FcDeleteDatabase } from 'react-icons/fc';
 import css from './Contact.module.css';
 
@@ -11,7 +11,7 @@ export const Contact = ({ contact }) => {
   return (
     <>
       <p className={css.text}>
-        {contact.name}: {contact.phone}
+        {contact.name}: {contact.number}
       </p>
       <button className={css.button} onClick={handleDelete}>
         Delete

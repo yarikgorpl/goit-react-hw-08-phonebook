@@ -3,8 +3,8 @@ import css from 'components/ContactList/ContactList.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Filter from '../Filter/Filter';
-import { filterContacts } from 'redux/filterSlice';
-import { getError, getIsLoading } from 'redux/selectors';
+import { filterContacts } from 'redux/contacts/filterSlice';
+import { getError, getIsLoading } from 'redux/contacts/selectors';
 import { ProgressBar } from 'react-loader-spinner';
 
 import { Contact } from 'components/Contact/Contact';
